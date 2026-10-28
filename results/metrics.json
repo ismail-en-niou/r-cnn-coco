@@ -1,0 +1,43 @@
+{
+  "configuration": {
+    "plateforme": "Kaggle, GPU NVIDIA T4 (1 GPU utilisé), précision mixte",
+    "dataset": "COCO 2017 (80 classes)",
+    "images_train": 3000,
+    "objets_train": 22158,
+    "images_validation": 500,
+    "objets_validation": 3705,
+    "epochs": 5,
+    "batch_size": 4,
+    "taille_images": "512 x 853",
+    "optimiseur": "SGD momentum 0.9, lr 0.01, weight decay 1e-4, warm-up 500 it + cosinus",
+    "backbone": "ResNet-50 + FPN pré-entraîné ImageNet (layer2-4 ré-entraînés)",
+    "duree_entrainement_min": 25.7,
+    "duree_totale_notebook_s": 1829
+  },
+  "par_epoque": [
+    {"epoch": 1, "train_loss": 1.2730, "val_mAP": 0.0029, "val_AP50": 0.0086, "val_AP75": 0.0011, "val_AR100": 0.0214},
+    {"epoch": 2, "train_loss": 1.1644, "val_mAP": 0.0137, "val_AP50": 0.0371, "val_AP75": 0.0072, "val_AR100": 0.0702},
+    {"epoch": 3, "train_loss": 1.0800, "val_mAP": 0.0376, "val_AP50": 0.0973, "val_AP75": 0.0237, "val_AR100": 0.1308},
+    {"epoch": 4, "train_loss": 0.9657, "val_mAP": 0.0716, "val_AP50": 0.1710, "val_AP75": 0.0466, "val_AR100": 0.2075},
+    {"epoch": 5, "train_loss": 0.8826, "val_mAP": 0.0837, "val_AP50": 0.1886, "val_AP75": 0.0595, "val_AR100": 0.2298}
+  ],
+  "metriques_coco": {
+    "train":      {"AP": 0.1383, "AP50": 0.2897, "AP75": 0.1141, "AP_small": 0.0865, "AP_medium": 0.2056, "AP_large": 0.1576,
+                   "AR1": 0.1581, "AR10": 0.2807, "AR100": 0.3043, "AR_small": 0.1528, "AR_medium": 0.3523, "AR_large": 0.4037},
+    "validation": {"AP": 0.0837, "AP50": 0.1886, "AP75": 0.0595, "AP_small": 0.0469, "AP_medium": 0.1058, "AP_large": 0.1457,
+                   "AR1": 0.1170, "AR10": 0.2157, "AR100": 0.2298, "AR_small": 0.0816, "AR_medium": 0.2397, "AR_large": 0.3506},
+    "reference_torchvision_coco_complet": {"AP": 0.3753, "AP50": 0.5762, "AP75": 0.4056, "AP_small": 0.2342, "AP_medium": 0.4015,
+                   "AP_large": 0.5390, "AR1": 0.319, "AR10": 0.510, "AR100": 0.533, "AR_small": 0.351, "AR_medium": 0.539, "AR_large": 0.690}
+  },
+  "pertes_moyennes": {
+    "epoque_1": {"loss_classifier": 0.619, "loss_box_reg": 0.266, "loss_objectness": 0.235, "loss_rpn_box_reg": 0.153, "total": 1.273},
+    "epoque_5": {"loss_classifier": 0.362, "loss_box_reg": 0.364, "loss_objectness": 0.063, "loss_rpn_box_reg": 0.093, "total": 0.883}
+  },
+  "ap50_par_classe_validation": {
+    "person": 0.596, "car": 0.368, "book": 0.052, "chair": 0.141, "cup": 0.245, "traffic light": 0.130, "bowl": 0.186,
+    "bottle": 0.224, "dining table": 0.126, "sheep": 0.355, "handbag": 0.013, "banana": 0.087, "bird": 0.091,
+    "truck": 0.230, "backpack": 0.020, "giraffe": 0.72, "zebra": 0.60, "spoon": 0.0, "refrigerator": 0.0, "apple": 0.0
+  },
+  "seuil_0_5": {"precision": 0.40, "rappel": 0.31, "detections": 2947},
+  "inference": {"images_par_seconde_T4": 12.55, "ms_par_image": 80}
+}
